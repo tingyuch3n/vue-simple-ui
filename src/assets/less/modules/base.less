@@ -1,0 +1,69 @@
+/** Base Global Elements **/
+
+html {
+  touch-action: manipulation;
+}
+
+html, body {
+  font-family: @base-font-family;
+  font-size: 14px;
+  line-height: 1.4em;
+  font-weight: 200;
+  color: @greyDark;
+  -webkit-font-smoothing: antialiased;
+  &.noScroll {
+    overflow: hidden !important;
+    height: 100% !important;
+  }
+}
+
+hr {
+  margin: 0;
+  border: none;
+  border-bottom: solid 1px @grey;
+}
+
+iframe {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+
+/** Clears and Floats **/
+
+.clear {
+  clear: both;
+}
+
+
+/** Links **/
+a {
+  text-decoration: none;
+  color: @blue;
+  outline: none;
+  .transition(0.2s);
+  &:hover {
+    color: @greyDark;
+    text-decoration: none;
+  }
+  &:focus {
+    outline: none;
+    text-decoration: none;
+  }
+}
+
+/** Lists **/
+ul {
+  margin: 0 0 15px 15px;
+  padding: 0;
+
+  li {
+    margin: 0 0 10px 0;
+    padding: 0;
+  }
+}
+
+
+

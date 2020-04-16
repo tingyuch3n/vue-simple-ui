@@ -1,0 +1,1394 @@
+/** Forms **/
+
+form {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+// Text Inputs
+
+input,
+textarea {
+  .transition(0.2s);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="phone"],
+input[type="number"],
+input[type="tel"],
+input[type="date"],
+textarea {
+  width: 100%;
+  height: @inputHeight;
+  padding: 0 @inputHeight 0 10px;
+  font-family: @base-font-family;
+  font-weight: normal;
+  color: @black;
+  border: solid 1px @greyLight;
+  outline: none;
+  -webkit-appearance: none;
+  .rounded(4px);
+  .box-sizing(border-box);
+
+  &:focus {
+    border: solid 1px @grey;
+  }
+
+  &:read-only {
+    border: none;
+    padding: 0;
+  }
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+textarea {
+  min-height: 100px;
+  padding: 10px;
+  .box-sizing(border-box);
+}
+
+
+// Custom Checkboxes and Radio Buttons
+
+input[type=radio],
+input[type=checkbox] {
+  width: 20px;
+  height: 20px;
+  border: 1px solid @greyLight;
+  background: @white;
+  display: inline-block;
+  position: relative;
+  margin: 0 10px 0 0;
+  padding: 0;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  .rounded(4px);
+  &:focus {
+    outline: none;
+  }
+}
+
+input[type=checkbox]:checked:before {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  font-family: @icon-font-family;
+  content: "\f122";
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: @greyDark;
+}
+
+input[type=radio] {
+  .rounded(50%);
+}
+
+input[type=radio]:checked:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  background: @greyDark;
+  border: solid 3px @white;
+  .box-sizing(border-box);
+  .rounded(50%);
+}
+
+// Checkbox - Switch Styling
+.checkboxSwitch {
+  overflow: hidden;
+  margin: 0 !important;
+  .ginput_container {
+    position: relative;
+    display: inline-block;
+    width: 68px !important;
+    height: @inputHeight;
+    overflow: visible;
+
+    input {
+      display: none;
+
+      &:checked + .slider {
+        background-color: @green;
+      }
+
+      &:focus + .slider {
+        box-shadow: 0 0 1px @green;
+      }
+
+      &:checked + .slider:before {
+        transform: translateX(32px);
+      }
+    }
+
+    .gfield_label {
+      width: 68px;
+      height: @inputHeight;
+      max-width: none;
+      float: none;
+      position: relative;
+      z-index: 3;
+      line-height: @inputHeight;
+      margin: 0;
+      cursor: pointer;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: @grey;
+      z-index: 1;
+      .transition(0.3s);
+      .rounded(4px);
+      &:before {
+        position: absolute;
+        content: "";
+        height: 32px;
+        width: 32px;
+        left: 2px;
+        bottom: 2px;
+        background: @white;
+        z-index: 2;
+        .rounded(3px);
+        .transition(0.3s);
+      }
+    }
+  }
+}
+
+// Custom Select Dropdowns
+.select {
+  width: 100%;
+  height: @inputHeight;
+  font-family: @base-font-family;
+  position: relative;
+  border: solid 1px @greyLight;
+  .rounded(4px);
+  .box-sizing(border-box);
+  select {
+    width: 100%;
+    height: 100%;
+    padding: 0 20px 0 10px;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    .box-sizing(border-box);
+  }
+  &:before {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    z-index: 2;
+    pointer-events: none;
+    margin-top: -3px;
+    border-style: solid;
+    border-width: 6px 5px 0 5px;
+    border-color: @greyDark transparent transparent transparent;
+  }
+}
+.error {
+  .select {
+    border: solid 1px @error;
+  }
+}
+
+
+// Multi-Select
+
+.multiselect {
+  min-height: 36px;
+
+  input {
+    width:  100% !important;
+    position: relative !important;
+    margin: 0;
+    border-right: none;
+    border-left: none;
+    border-bottom: none;
+    padding: 0 10px !important;
+    font-size: 14px;
+    &.multiselect__input {
+      border-right: none;
+      border-left: none;
+      border-bottom: none;
+      font-size: 14px;
+      .rounded(0);
+    }
+  }
+  .multiselect__tags {
+    min-height: 0;
+    padding: 0;
+    border: 1px solid @greyLight;
+    position: relative;
+  }
+  .multiselect__single {
+    font-size: 14px;
+    height: 36px;
+    margin: 0;
+    line-height: 36px;
+    padding: 0 10px;
+  }
+  .custom__tag {
+    height: 36px;
+    display: inline-block;
+    line-height: 36px;
+    margin: 0;
+    padding: 0 10px;
+    color: @greyDark;
+    .rounded(3px);
+    span {
+      display: inline;
+      vertical-align: middle;
+    }
+    .custom__remove {
+      font-size: 18px;
+      cursor: pointer;
+    }
+  }
+  .multiselect__spinner {
+
+  }
+  .multiselect__content-wrapper {
+    border: solid 1px @greyLight;
+    border-top: none;
+    .rounded(0 0 4px 4px);
+    ul {
+      &.multiselect__content {
+        li {
+          display: table;
+          width: 100%;
+          margin: 0;
+          height: 36px;
+          .multiselect__option {
+            width: 100%;
+            height: 100%;
+            display: table-cell;
+            margin: 0;
+            padding: 0 10px;
+            font-size: 14px;
+            vertical-align: middle;
+            &:after {
+              display: none;
+            }
+            &.multiselect__option--highlight {
+              background: @greyDark;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.multiselect--above {
+    .multiselect__content-wrapper {
+      bottom: auto;
+      .rounded(0 0 4px 4px);
+    }
+  }
+}
+
+
+
+// Custom Date of Birth Grouping
+.dateOfBirth {
+  border: solid 1px @greyLight;
+  .rounded(4px);
+  input {
+    background: none;
+    border: solid 1px transparent;
+    width: auto;
+    text-align: center;
+    padding: 0;
+    height: 34px;
+    &.txtDobDay,
+    &.txtDobMonth {
+      width: 45px;
+    }
+    &.txtDobYear {
+      width: 60px;
+    }
+    &:focus {
+      border: solid 1px transparent;
+    }
+  }
+}
+.error {
+  .dateOfBirth {
+    border: solid 1px @error;
+    input {
+      border: solid 1px transparent !important;
+    }
+  }
+}
+
+
+
+// Vue clear text input button
+.v-reset-input {
+  width: @inputHeight;
+  height: @inputHeight;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  text-align: center;
+  font-size: 18px;
+  line-height: 200px;
+  color: @greyLight;
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow: hidden;
+  cursor: pointer;
+  &:hover {
+    background: none;
+    color: @grey;
+  }
+  &.v-reset-input-active {
+    cursor: pointer !important;
+    &:before {
+      width: 100%;
+      height: 100%;
+      font-family: @icon-font-family;
+      content: "\f128";
+      line-height: @inputHeight;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+    }
+  }
+}
+
+
+
+
+
+
+// Chosen Auto-complete {
+.chosen-container {
+  width: 100% !important;
+  max-width: 800px;
+  &.chosen-container-single {
+    .chosen-single {
+      height: 40px;
+      line-height: 40px;
+      border: solid 1px @greyLight;
+      background: @white;
+      box-shadow: none;
+      div {
+        display: none;
+      }
+      &:before {
+        content: "";
+        width: 0;
+        height: 0;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        z-index: 2;
+        pointer-events: none;
+        margin-top: -3px;
+        border-style: solid;
+        border-width: 6px 5px 0 5px;
+        border-color: @greyDark transparent transparent transparent;
+      }
+    }
+    .chosen-drop {
+      border: solid 1px @greyLight;
+      border-top: none;
+    }
+    .chosen-search {
+      input[type="text"] {
+        height: 40px;
+        background: none;
+        border: solid 1px @greyLight;
+        background: @white;
+        background-image: none !important;
+      }
+      &:before {
+        content: "\f4a5";
+        display: block;
+        width: 30px;
+        height: 40px;
+        position: absolute;
+        right: 0;
+        top: 5px;
+        z-index: 2;
+        font-family: @icon-font-family;
+        font-size: 21px;
+        color: @greyMedium;
+        line-height: 40px;
+      }
+    }
+  }
+
+  .chosen-results {
+    li {
+      height: 30px;
+      padding: 0 5px;
+      line-height: 30px;
+      &.highlighted {
+        background: @blue;
+      }
+    }
+  }
+}
+
+
+
+
+// Custom File Uploads
+.ginput_container_fileupload {
+  .gform_drop_area {
+    width: 100%;
+    float: left;
+    margin: 0 0 15px 0;
+    padding: 20px;
+    text-align: center;
+    border: dashed 2px @greyLight;
+    .box-sizing(border-box);
+    .gform_drop_instructions {
+      width: 100%;
+      float: left;
+      text-align: center;
+      display: block;
+      margin: 0 0 10px 0;
+      input[type="button"] {
+        margin: 0 auto;
+        float: none;
+      }
+    }
+  }
+  #extensions_message {
+    font-size: 12px;
+  }
+}
+
+
+label {
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+
+
+/** Form Validation **/
+
+.gfield_error,
+.error {
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="password"],
+  input[type="phone"],
+  input[type="number"],
+  input[type="tel"],
+  input[type=radio],
+  input[type=checkbox],
+  textarea,
+  .ginput_container_select {
+    border: solid 1px @error;
+  }
+  .gform_drop_area {
+    border: dashed 2px @error;
+  }
+  .ginput_container_select {
+    &:before {
+      border-color: @error transparent transparent transparent;
+    }
+  }
+}
+
+.validation_message {
+  color: @error;
+  margin: 5px 0 0 0;
+  font-size: 12px;
+  font-weight:normal;
+  display: block;
+}
+
+
+/** Global Validation Message **/
+.validation_error {
+  padding: 15px;
+  margin: 0 0 15px 0;
+  text-align: center;
+  color: @error;
+}
+
+
+
+
+// Form Layouts
+.gform_wrapper {
+  width: 100%;
+  margin: 0 auto;
+  form,
+  .gform_heading,
+  .gform_body,
+  .gform_footer {
+    width: 100%;
+    float: left;
+  }
+}
+
+// Form Page Layouts
+@media only screen and (min-width: 768px) {
+  .gform_body {
+    max-width: 1200px;
+    .col-main {
+      width: calc(~"(100% - 200px)");
+    }
+    .col-right {
+      width: 200px;
+      float: right;
+    }
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .gform_body {
+    .col-main {
+      width: calc(~"(100% - 250px)");
+    }
+    .col-right {
+      width: 250px;
+    }
+  }
+}
+
+
+// Form Field Layouts
+ul {
+  &.gform_fields {
+    margin: 0;
+    padding: 0;
+    li {
+      list-style: none;
+      margin: 0 0 15px 0;
+      .ginput_container {
+        position: relative;
+        .transition(0.25s, ease-in, 0s);
+      }
+      &.formSectionHeader {
+        margin: 0 0 20px 0;
+      }
+      &.gfield {
+        > label {
+          padding: 0;
+          .transition(0.25s, ease-in, 0s);
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  ul {
+    &.gform_fields {
+      li {
+        .ginput_container {
+          width: calc(~"(100% - 200px)");
+          float: left;
+        }
+        &.gfield,
+        &.gfield .datePickerWrapper {
+          > label {
+            width: 200px;
+            padding-top: 8px;
+            padding-right: 20px;
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .menuOpen {
+    ul {
+      &.gform_fields {
+        li {
+          .ginput_container {
+            width: calc(~"(100% - 150px)");
+          }
+          &.gfield {
+            > label {
+              width: 150px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+// Checkbox and Radio Layouts
+ul {
+  &.gfield_checkbox,
+  &.gfield_radio {
+    width: 100%;
+    float: left;
+    margin: 0;
+    padding: 0;
+    li {
+      width: 100%;
+      float: left;
+      list-style: none;
+      margin: 10px 0 0 0;
+      input {
+        float: left;
+      }
+      label {
+        margin: 2px 0 0 0;
+        overflow: auto;
+        line-height: 1.5em;
+        display: block;
+        font-weight: normal;
+      }
+    }
+  }
+}
+
+
+// Form Footer Layout
+.gform_footer {
+  padding: 0 15px;
+  margin: 0 0 20px 0;
+  input[type="submit"],
+  .btn,
+  .button {
+    float: left;
+    margin: 0 0 15px 0;
+    min-width: 120px;
+  }
+  .spacer {
+    width: 200px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .gform_footer {
+    padding: 0 20px;
+    input[type="submit"],
+    .button,
+    .btn {
+      margin: 0 15px 0 0;
+    }
+  }
+}
+
+// Fixed Form Footer Layout
+
+@media only screen and (min-width: 768px) {
+  .gform_footer {
+    &.fixed {
+      width: auto;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      margin: 0;
+      padding: 15px 0 15px 235px;
+      background: @greyExtraLight;
+      .box-sizing(border-box);
+      .transition(0.25s, ease-in, 0s);
+      -webkit-box-shadow: 0px -1px 1px 0px rgba(0,0,0,0.1);
+      -moz-box-shadow: 0px -1px 1px 0px rgba(0,0,0,0.1);
+      box-shadow: 0px -1px 1px 0px rgba(0,0,0,0.1);
+      .spacer {
+        display: none;
+      }
+    }
+  }
+  .menuOpen {
+    .gform_footer {
+      &.fixed {
+        right: 250px;
+      }
+    }
+  }
+}
+
+
+
+// HelpText
+.help,
+.help-block {
+  font-size: 12px;
+  margin: 5px 0 0 0;
+  color: @greyMedium;
+}
+
+
+
+
+
+
+
+/** Text Angular WYSIWYG Editor **/
+.ta-toolbar {
+  .btn-group {
+    margin-bottom: 5px;
+  }
+}
+.ta-scroll-window {
+  height: auto;
+  float: left;
+  padding: 10px;
+  > .ta-bind {
+    min-height: 500px;
+    height: 500px;
+    overflow: auto;
+    outline: none;
+  }
+  &.has-feedback,
+  &.form-control {
+    padding: 10px;
+  }
+  textarea {
+    height: 100%;
+    min-height: 500px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+// Date and Time Pickers
+
+.datePicker,
+.timePicker {
+  .form-group {
+    margin: 0;
+  }
+  .dropdown-menu {
+    border: solid 1px @greyLight;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    li {
+      padding: 10px;
+      margin: 0;
+      .box-sizing(border-box);
+    }
+  }
+
+  input {
+    border: solid 1px @greyLight;
+    box-shadow: none;
+    padding: 0 10px;
+    &:focus {
+      border: solid 1px @greyLight;
+      box-shadow: none;
+    }
+  }
+  .input-group {
+    button {
+      &.btn {
+        width: @inputHeight;
+        margin: 0;
+        padding: 0;
+        &:hover,
+        &:focus {
+
+        }
+      }
+    }
+    .ion {
+      font-size: 21px;
+      &:before {
+        line-height: @inputHeight;
+      }
+    }
+  }
+  table {
+    button {
+      &.btn {
+        width: 100%;
+        background: none;
+        color: @greyDark;
+        padding: 0;
+        margin: 0 !important;
+        text-align: center;
+      }
+    }
+    thead {
+      td {
+        padding-bottom: 10px;
+      }
+      small {
+        font-size: 13px;
+        font-weight: bold;
+      }
+      button {
+        &.btn {
+          font-size: 14px;
+          &:hover,
+          &:focus {
+            background: none;
+          }
+        }
+      }
+    }
+    tbody {
+      button {
+        &.btn {
+          font-size: 14px;
+          &:hover,
+          &:focus {
+            background: @greyExtraLight;
+          }
+        }
+      }
+    }
+  }
+}
+
+.datePicker {
+  .text-muted {
+    color: @greyLight;
+  }
+  // Footer Buttons
+  .text-center {
+    button {
+      &.btn-info {
+        &:hover,
+        &:focus {
+          background: @black;
+        }
+      }
+      &.btn-default {
+        background: none;
+        color: @greyDark;
+        font-weight: bold;
+        &:hover,
+        &:focus {
+          background: none;
+        }
+      }
+    }
+  }
+}
+
+.timePicker {
+  .dropdown-menu {
+    width: 100%;
+    li {
+      padding: 0;
+    }
+  }
+  section {
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+  }
+  table {
+    margin: 0 auto;
+    button {
+      &.btn {
+        &.btn-default {
+          width: 50px;
+          height: 40px;
+          float: left;
+          border: solid 1px @greyLight;
+          margin-left: 15px !important;
+          &:hover,
+          &:focus {
+            background: none;
+          }
+        }
+      }
+    }
+  }
+  .text-center {
+    button {
+      &.btn {
+        &:hover,
+        &:focus {
+          background: none;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .datePicker,
+  .timePicker {
+    max-width: 320px;
+  }
+}
+
+
+
+
+.dropzoneInline {
+  .dropzone {
+    border: dashed 2px @greyLight;
+    .dz-message {
+      width: 100%;
+      margin: 0;
+      top: 50%;
+      left: 0;
+      position: absolute;
+      .transform(translate(0, -50%));
+    }
+    &.dz-drag-hover {
+      border: dashed 2px @grey;
+      background: @greyExtraLight;
+    }
+  }
+}
+
+
+// Right Column Image e.g. Avatar, Product Image.
+.imagePlaceholder {
+  width: 100px;
+  margin: 0 auto 50px auto;
+  text-align: center;
+  position: relative;
+  .image {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    background: @greyExtraLight;
+    line-height: 100px;
+    font-size: 28px;
+    color: @grey;
+    text-align: center;
+    margin: 0 0 15px 0;
+    .ion {
+      font-size: 42px;
+      color: @greyLight;
+      &:before {
+        line-height: 100px;
+      }
+    }
+    img {
+      width: 100%;
+      height: auto;
+      float: left;
+    }
+  }
+  .dropzone {
+    padding: 0;
+    min-height: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: none;
+    cursor: pointer;
+    .dz-message {
+      margin: 0;
+      padding-top: calc(~"(100% + 15px)");
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .imagePlaceholder {
+    width: 100%;
+    max-width: 210px;
+    .image {
+      font-size: 42px;
+      line-height: 170px;
+      font-weight: 400;
+      .ion {
+        font-size: 80px;
+        &:before {
+          line-height: 160px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .imagePlaceholder {
+    .image {
+      font-size: 48px;
+      line-height: 220px;
+      .ion {
+        font-size: 120px;
+        &:before {
+          line-height: 210px;
+        }
+      }
+    }
+  }
+}
+
+
+
+/** Colour Picker **/
+.el-color-dropdown {
+  .el-button {
+    padding: 0 15px;
+    &.el-color-dropdown__btn {
+      min-width: 60px;
+      background: @greyDark;
+      border: solid 1px @greyDark;
+      color: @white;
+      .rounded(4px);
+      &:hover,
+      &:focus {
+        background: @black;
+        color: @white;
+        border: solid 1px @black;
+      }
+    }
+    &.el-color-dropdown__link-btn {
+      background: @white;
+      border: solid 1px @white;
+      color: @greyDark;
+      padding: 0 10px;
+      &:hover,
+      &:focus {
+        background: @white;
+        color: @greyDark;
+      }
+    }
+  }
+}
+
+
+
+/** Dropzone File Uploads **/
+
+// Custom File Uploads
+.upload-file {
+  position: relative;
+  z-index: 1;
+  .dropzone {
+    height: 36px;
+    min-height: 0;
+    line-height: 36px;
+    padding: 0 15px;
+    color: @greyDark;
+    border: solid 1px @greyLight;
+    .rounded(3px);
+
+    input[type="file"] {
+      opacity: 0;
+    }
+    #extensions_message {
+      font-size: 12px;
+    }
+
+    &.dz-started {
+      .dz-message {
+        i {
+          display: none;
+        }
+      }
+    }
+    .dz-preview {
+      width: 100%;
+      height: 36px;
+      min-height: 0;
+      padding: 0;
+      margin: 0;
+      .dz-details {
+        width: 100%;
+        height: calc(~'@{inputHeight} - 2px');
+        position: relative;
+        float: left;
+        padding: 0;
+        margin: 0;
+        line-height: calc(~'@{inputHeight} - 2px');
+        text-align: left;
+        .dz-filename {
+          span {
+            padding: 0;
+            border: none !important;
+          }
+        }
+      }
+    }
+    .dz-message {
+      text-align: left;
+      padding: 0 15px;
+      font-weight: normal;
+    }
+
+    .dz-remove {
+      width: 100%;
+      height: @inputHeight;
+      display: block;
+      position: absolute;
+      z-index: 21;
+      //right: 0;
+      left: 100%;
+      top: 0;
+      margin-left: 10px;
+      line-height: @inputHeight;
+      text-align: left;
+      text-decoration: none;
+
+      &:before {
+        width: 100%;
+        height: 100%;
+        font-family: @icon-font-family;
+        content: "\f128";
+        line-height: @inputHeight;
+        position: absolute;
+        top: 0;
+        right: -90px;
+        display: block;
+        color: @greyLight
+      }
+      &:hover {
+        &:before {
+          color: @grey;
+        }
+      }
+    }
+    .dz-image {
+      display: none !important;
+    }
+    .dz-error-message {
+      color: @error;
+      font-size: 13px;
+      margin-top: -15px;
+      margin-left: -55px;
+    }
+  }
+
+  &.error {
+    .dropzone {
+      border: solid 1px @error;
+    }
+  }
+}
+
+/** File Upload Modal **/
+.modal {
+  .upload-file {
+    width: 100%;
+    .dropzone .dz-remove {
+      left: auto;
+      right: 30px;
+      text-align: right;
+      margin-left: 0;
+      &::before {
+        right: -20px;
+      }
+    }
+  }
+  //.modal-footer {
+  //  text-align: center;
+  //  .btn-primary {
+  //    float: none !important;
+  //  }
+  //  .btn-default {
+  //    display: none !important;
+  //  }
+  //}
+}
+
+/** File Upload Progress Bar **/
+.progress-bar, .el-progress-bar {
+  height: 5px !important;
+  margin: 10px 0 0 0 !important;
+  background: @white;
+  width: 100% !important;
+}
+
+@media only screen and (max-width: 767px) {
+  .upload-file {
+    font-size: 15px;
+    .dropzone {
+      height: 40px;
+      line-height: 40px;
+      .dz-remove {
+        top: 6px;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .upload-file {
+    .ginput_container_fileupload,
+    .dropzone {
+
+    }
+  }
+}
+
+.fileUploadPreview {
+  max-width: 120px;
+  margin: 0 0 15px 0;
+  border: solid 1px @greyLight;
+  img {
+    width: 100%;
+    height: auto;
+    padding: 5px;
+  }
+}
+
+
+/** WYSIWYG Editor **/
+
+// Fix for lists and bullets
+.fr-box {
+  ul, ol {
+    margin: 0 0 15px 15px;
+    padding: 0;
+    li {
+      margin: 0 0 10px 0;
+      padding: 0;
+    }
+  }
+  ol {
+    li {
+      list-style: decimal;
+    }
+  }
+  ul {
+    li {
+      list-style: disc;
+    }
+  }
+}
+
+
+/** Transfer Element **/
+
+.el-transfer {
+  .el-transfer-panel {
+    width: 350px;
+  }
+  .el-transfer-panel__item {
+    &:hover {
+      color: @greyDark;
+    }
+  }
+  .el-transfer-panel__header {
+    .el-checkbox {
+      .el-checkbox__label {
+        padding-left: 8px;
+        font-size: 14px;
+        font-weight: 200;
+      }
+    }
+  }
+  .el-input__inner {
+    height: @inputHeight;
+    font-size: 14px;
+    padding: 0 @inputHeight 0 10px;
+    .rounded(4px);
+  }
+  .el-input__prefix {
+    left: auto;
+    right: 5px;
+    font-size: 18px;
+  }
+  .el-checkbox {
+    .el-checkbox__original {
+      position: absolute;
+      left: 0;
+    }
+    .el-checkbox__label {
+      line-height: 38px;
+      padding-left: 28px;
+    }
+  }
+  .el-checkbox__input {
+    &.is-checked {
+      .el-checkbox__inner {
+        background: none;
+        border-color: @greyLight !important;
+      }
+      +.el-checkbox__label {
+        color: @greyDark;
+        font-weight: bold;
+      }
+      &:before {
+        width: 20px;
+        text-align: center;
+        font-family: @icon-font-family;
+        content: "\f122";
+        margin: 0;
+        font-size: 14px;
+        line-height: 20px;
+        color: @greyDark;
+        position: absolute;
+        z-index: 3;
+      }
+    }
+    &.is-indeterminate {
+      .el-checkbox__inner {
+        background: none;
+        border-color: @greyLight;
+      }
+      &:before {
+        width: 20px;
+        text-align: center;
+        font-family: @icon-font-family;
+        content: "\f209";
+        margin: 0;
+        font-size: 14px;
+        line-height: 20px;
+        color: @greyDark;
+        position: absolute;
+        z-index: 3;
+      }
+    }
+  }
+  .el-checkbox__inner {
+    width: 20px;
+    height: 20px;
+    border: 1px solid @greyLight !important;
+    .rounded(4px);
+    &:after {
+      display: none;
+    }
+  }
+}

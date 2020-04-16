@@ -1,0 +1,17 @@
+# Build data
+/build/
+/node_modules
+.DS_Store
+*/.DS_Store
+*.sql
+*.zip
+*.log
+.idea
+tests
+*/dist
+*/staging
+*/node_modules
+
+#local files
+*/src/api/config.js
+*.sh
